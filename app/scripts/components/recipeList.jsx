@@ -1,13 +1,19 @@
 var React = require('react');
 
+var Template = require('./layout/template.jsx').Template;
+
 var RecipeList = React.createClass({
   render: function(){
     return(
-      <h1>Test Recipe List</h1>
+      <div className = "container">
+        <Template>
+          <h1>Test Recipe List</h1>
+        </Template>
+      </div>
     );
   }
 });
 
-module.export = {
+module.exports = {
   RecipeList: RecipeList
 };
