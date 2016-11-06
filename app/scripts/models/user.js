@@ -35,6 +35,7 @@ var User = Backbone.Model.extend({
   login: function(username, password){
       var url = 'https://rene-recipe-app.herokuapp.com/login';
       var self = this;
+      localStorage.setItem('username', username);
 
       $.get(url+'?username='+username+'&password='+password).then(function(response){
 
