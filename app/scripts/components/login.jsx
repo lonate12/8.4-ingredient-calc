@@ -1,6 +1,8 @@
 var React = require('react');
 
+// Local imports
 var Template = require('./layout/template.jsx').Template;
+var User = require('../models/user.js').User;
 
 var LoginForm = React.createClass({
   render: function(){

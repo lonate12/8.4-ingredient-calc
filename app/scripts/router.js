@@ -18,6 +18,14 @@ var AppRouter = Backbone.Router.extend({
     'sign-up/': 'signUp',
     'login/': 'login'
   },
+  initialize: function(){
+    $.ajaxSetup({
+      beforeSend: function(xhr){
+        xhr.setRequestHeader('X-Parse-Application-Id', 'recipe_calc'),
+        xhr.setRequestHeader('X-Parse-REST-API-Key', 'france')
+      }
+    });
+  },
   index: function(){
     ReactDOM.render(
       React.createElement(AppComponent),
