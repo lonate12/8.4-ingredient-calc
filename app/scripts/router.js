@@ -5,8 +5,8 @@ var ReactDOM = require('react-dom');
 
 // Component Imports
 var AppComponent = require('./components/app.jsx').AppComponent;
-var RecipeList = require('./components/recipeList.jsx').RecipeList;
-var AddRecipeForm = require('./components/addRecipeForm.jsx').AddRecipeForm;
+var RecipeListContainer = require('./components/recipeList.jsx').RecipeListContainer;
+var AddRecipeFormContainer = require('./components/addRecipeForm.jsx').AddRecipeFormContainer;
 var SignUpContainer = require('./components/signUp.jsx').SignUpContainer;
 var LoginContainer = require('./components/login.jsx').LoginContainer;
 
@@ -34,13 +34,13 @@ var AppRouter = Backbone.Router.extend({
   },
   recipeList: function(){
     ReactDOM.render(
-      React.createElement(RecipeList),
+      React.createElement(RecipeListContainer),
       document.getElementById('app')
     );
   },
   recipeForm: function(){
     ReactDOM.render(
-      React.createElement(AddRecipeForm),
+      React.createElement(AddRecipeFormContainer),
       document.getElementById('app')
     );
   },

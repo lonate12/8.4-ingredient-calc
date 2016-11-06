@@ -3,7 +3,7 @@ var React = require('react');
 var Template = require('./layout/template.jsx').Template;
 var RecipeCollection = require('../models/recipes.js').RecipeCollection;
 
-var RecipeList = React.createClass({
+var RecipeListContainer = React.createClass({
   getInitialState: function(){
     var self = this;
     var recipeCollection = new RecipeCollection();
@@ -18,7 +18,7 @@ var RecipeList = React.createClass({
   render: function(){
     var recipes = this.state.recipeCollection.map(function(recipe){
       return (
-        <h1>This is a recipe</h1>
+        <h1>This is an ingredient</h1>
       );
     });
 
@@ -31,5 +31,5 @@ var RecipeList = React.createClass({
 });
 
 module.exports = {
-  RecipeList: RecipeList
+  RecipeListContainer: RecipeListContainer
 };
