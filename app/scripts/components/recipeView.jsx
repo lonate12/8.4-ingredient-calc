@@ -8,7 +8,10 @@ var RecipeContainer = React.createClass({
     var self = this;
     var currentRecipe;
 
-    $.ajax({url: 'https://rene-recipe-app.herokuapp.com/classes/Recipes/'+this.props.currentId+'/'}).then(function(response){
+    $.ajax({
+      url: 'https://rene-recipe-app.herokuapp.com/classes/Recipes/'+this.props.currentId+'/',
+      data: 'where={"recipe":{"__type":"Pointer", "className":"recipe", "objectId":this.props.currentId}}'
+    }).then(function(response){
       console.warn(response);
       currentRecipe = response;
       self.setState({currentRecipe: currentRecipe});
