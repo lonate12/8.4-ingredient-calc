@@ -18,7 +18,7 @@ var Ingredient = Backbone.Model.extend({
 });
 
 var IngredientCollection = Backbone.Collection.extend({
-  model: Recipe,
+  model: Ingredient,
   url: 'https://rene-recipe-app.herokuapp.com/classes/Ingredients'
 });
 
