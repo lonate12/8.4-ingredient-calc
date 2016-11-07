@@ -5766,4 +5766,15 @@ button.close {
 img {
   max-width: 100%; }
 
+.recipe-thumbnail {
+  display: inline-block;
+  height: 160px;
+  width: 100%;
+  border-radius: 5px;
+  background-color: grey; }
+  .recipe-thumbnail .recipe-name {
+    text-align: center;
+    color: white;
+    margin-top: 40px; }
+
 /*# sourceMappingURL=app.css.map */
