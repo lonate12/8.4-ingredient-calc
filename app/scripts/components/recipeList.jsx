@@ -7,11 +7,17 @@ var RecipeTile = React.createClass({
   render: function(){
     var tiles = this.props.recipeCollection.map(function(recipe){
       return(
-        <p className="recipe-name" key={recipe.get('objectId')}>{recipe.get('recipeName')}</p>
+        <div key={recipe.get('objectId')} className="col-md-2">
+          <div className="recipe-thumbnail col-md-12">
+            <a href={'#/classes/Recipes/'+ recipe.get('objectId') +'/'}>
+              <p className="recipe-name">{recipe.get('recipeName')}</p>
+            </a>
+          </div>
+        </div>
       );
     });
     return(
-      <div className="recipe-tile">
+      <div className="recipe-tile row">
         {tiles}
       </div>
     );

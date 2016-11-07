@@ -1,4 +1,5 @@
 var React = require('react');
+var Backbone = require('backbone');
 
 // Local imports
 var Template = require('./layout/template.jsx').Template;
@@ -11,7 +12,8 @@ var LoginForm = React.createClass({
     return{
       user: user,
       email: '',
-      password: ''
+      password: '',
+      isLoggedIn: false
     }
   },
   handleEmail: function(e){
@@ -28,8 +30,10 @@ var LoginForm = React.createClass({
     var password = this.state.password;
 
     this.state.user.login(email, password);
+    this.props.router.navigate('recipe-list/', {trigger: true});
 
     this.setState({email: '', password: ''});
+
   },
   render: function(){
     return(
@@ -38,11 +42,11 @@ var LoginForm = React.createClass({
         <form onSubmit={this.handleLogin}>
           <div className="form-group">
             <label htmlFor="email">Email Address</label>
-            <input onChange={this.handleEmail} type="email" className="form-control" id="email" placeholder="Email" />
+            <input onChange={this.handleEmail} type="email" className="form-control" id="email" placeholder="Email" value={this.state.email} />
           </div>
           <div className="form-group">
             <label htmlFor="password">Password</label>
-            <input onChange={this.handlePassword}type="password" className="form-control" id="password" placeholder="Password" />
+            <input onChange={this.handlePassword}type="password" className="form-control" id="password" placeholder="Password" value={this.state.password} />
           </div>
           <button type="submit" className="btn btn-default">Submit</button>
         </form>
@@ -55,7 +59,7 @@ var LoginContainer = React.createClass({
   render: function(){
     return(
       <Template>
-        <LoginForm />
+        <LoginForm router={this.props.router}/>
       </Template>
     );
   }

@@ -9,6 +9,7 @@ var RecipeListContainer = require('./components/recipeList.jsx').RecipeListConta
 var AddRecipeFormContainer = require('./components/addRecipeForm.jsx').AddRecipeFormContainer;
 var SignUpContainer = require('./components/signUp.jsx').SignUpContainer;
 var LoginContainer = require('./components/login.jsx').LoginContainer;
+var RecipeContainer = require('./components/recipeView.jsx').RecipeContainer;
 
 var AppRouter = Backbone.Router.extend({
   routes: {
@@ -16,7 +17,8 @@ var AppRouter = Backbone.Router.extend({
     'recipe-list/': 'recipeList',
     'add-recipe/': 'recipeForm',
     'sign-up/': 'signUp',
-    'login/': 'login'
+    'login/': 'login',
+    'classes/Recipes/:id/': 'recipe'
   },
   initialize: function(){
     $.ajaxSetup({
@@ -52,7 +54,13 @@ var AppRouter = Backbone.Router.extend({
   },
   login: function(){
     ReactDOM.render(
-      React.createElement(LoginContainer),
+      React.createElement(LoginContainer, {router: this}),
+      document.getElementById('app')
+    );
+  },
+  recipe: function(id){
+    ReactDOM.render(
+      React.createElement(RecipeContainer, {currentId: id}),
       document.getElementById('app')
     );
   }
