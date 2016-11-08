@@ -4,11 +4,45 @@ var React = require('react');
 var Template = require('./layout/template.jsx').Template;
 var Recipe = require('../models/recipes.js').Recipe;
 var Ingredient = require('../models/ingredients.js').Ingredient;
+var AdjustRecipe = require('./adjustRecipe.jsx').AdjustRecipe;
+
+var RecipeSection = React.createClass({
+  render: function(){
+    console.warn(this.props.currentRecipe);
+    return(
+      <div className="col-md-12">
+        <p>{this.props.currentRecipe.get('recipeName')}</p>
+        <img src={this.props.currentRecipe.get('image_url')} alt={this.props.currentRecipe.get('image_url')}></img>
+        <ul className="list-inline">
+          <li><p>Recipe Type</p><p>Dessert</p></li>
+          <li><p>Prep Time</p><p>15min</p></li>
+          <li><p>Cook Time</p><p>20min</p></li>
+          <li><p>Cook Temp</p><p>350 F</p></li>
+        </ul>
+      </div>
+    );
+  }
+});
+
+var IngredientSection = React.createClass({
+  render: function(){
+    return(
+      <div className="col-md-12">
+      </div>
+    );
+  }
+});
 
 var RecipeDisplay = React.createClass({
   render: function(){
     return(
-      <h1>Test Display</h1>
+      <div className="row">
+        <div className="col-md-6 col-md-offset-3">
+          <RecipeSection currentRecipe={this.props.currentRecipe}/>
+          <AdjustRecipe currentRecipe={this.props.currentRecipe}/>
+          <IngredientSection currentRecipe={this.props.currentRecipe}/>
+        </div>
+      </div>
     );
   },
 });
@@ -42,6 +76,7 @@ var RecipeContainer = React.createClass({
       });
 
       self.state.currentRecipe.set({ingredients: ingredients});
+    }).then(function(){
       self.setState({currentRecipe: self.state.currentRecipe});
     });
   },
