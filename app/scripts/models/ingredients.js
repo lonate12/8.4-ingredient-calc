@@ -6,7 +6,7 @@ var Ingredient = Backbone.Model.extend({
   },
   idAttribute: 'objectId',
   calcNewQuantity: function(factor){
-    this.quantity.set('adjustedQuantity', this.quantity * factor);
+    this.set('adjustedQuantity', this.get('quantity') * factor);
   },
   recipeIdToPointer: function(recipeObjectId){
     return {

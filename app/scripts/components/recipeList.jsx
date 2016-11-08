@@ -44,8 +44,6 @@ var RecipeListContainer = React.createClass({
     };
   },
   render: function(){
-    console.log(this.state.recipeCollection);
-
     return(
       <Template>
         <RecipeTile recipeCollection={this.state.recipeCollection}/>

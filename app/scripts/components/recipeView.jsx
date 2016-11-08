@@ -8,7 +8,6 @@ var AdjustRecipe = require('./adjustRecipe.jsx').AdjustRecipe;
 
 var RecipeSection = React.createClass({
   render: function(){
-    console.warn(this.props.currentRecipe);
     return(
       <div className="col-md-12">
         <p>{this.props.currentRecipe.get('recipeName')}</p>
@@ -39,7 +38,7 @@ var RecipeDisplay = React.createClass({
       <div className="row">
         <div className="col-md-6 col-md-offset-3">
           <RecipeSection currentRecipe={this.props.currentRecipe}/>
-          <AdjustRecipe currentRecipe={this.props.currentRecipe}/>
+          <AdjustRecipe adjustRecipe={this.props.adjustRecipe} currentRecipe={this.props.currentRecipe}/>
           <IngredientSection currentRecipe={this.props.currentRecipe}/>
         </div>
       </div>
@@ -56,12 +55,23 @@ var RecipeContainer = React.createClass({
       url: 'https://rene-recipe-app.herokuapp.com/classes/Recipes/' + this.props.currentId + '/'
     }).then(function(response){
       currentRecipe.set(response);
+      currentRecipe.set({adjustedQuantity: currentRecipe.get('quantity')});
       self.setState({currentRecipe: currentRecipe});
     });
 
     return {
       currentRecipe: currentRecipe
     };
+  },
+  adjustRecipe: function(factor, amountToMake){
+    var ingredientsArray = this.state.currentRecipe.get('ingredients');
+
+    ingredientsArray.forEach(function(ingredient){
+      ingredient.calcNewQuantity(factor);
+    });
+
+    this.state.currentRecipe.set({ingredients: ingredientsArray, adjustedQuantity: amountToMake});
+    this.setState({currentRecipe: this.state.currentRecipe});
   },
   componentWillMount: function(){
     var self = this;
@@ -81,10 +91,9 @@ var RecipeContainer = React.createClass({
     });
   },
   render: function(){
-
     return(
       <Template>
-        <RecipeDisplay currentRecipe={this.state.currentRecipe}/>
+        <RecipeDisplay adjustRecipe={this.adjustRecipe} currentRecipe={this.state.currentRecipe}/>
       </Template>
     );
   }
