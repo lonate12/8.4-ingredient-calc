@@ -23,14 +23,6 @@ var RecipeSection = React.createClass({
   }
 });
 
-var IngredientSection = React.createClass({
-  render: function(){
-    return(
-      <div className="col-md-12">
-      </div>
-    );
-  }
-});
 
 var RecipeDisplay = React.createClass({
   render: function(){
@@ -39,7 +31,6 @@ var RecipeDisplay = React.createClass({
         <div className="col-md-6 col-md-offset-3">
           <RecipeSection currentRecipe={this.props.currentRecipe}/>
           <AdjustRecipe adjustRecipe={this.props.adjustRecipe} currentRecipe={this.props.currentRecipe}/>
-          <IngredientSection currentRecipe={this.props.currentRecipe}/>
         </div>
       </div>
     );

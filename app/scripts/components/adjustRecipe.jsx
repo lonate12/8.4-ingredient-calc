@@ -18,7 +18,6 @@ var AdjustRecipe = React.createClass({
     this.props.adjustRecipe(factor, this.state.amountToMake);
   },
   componentWillReceiveProps: function(nextProps){
-    console.log(this.props.currentRecipe);
     var quantity = nextProps.currentRecipe.get('quantity');
     var adjustedQuantity = nextProps.currentRecipe.get('adjustedQuantity');
     this.setState({amountToMake: adjustedQuantity, originalQuantity: quantity});
