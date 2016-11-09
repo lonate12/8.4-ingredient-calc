@@ -11,12 +11,13 @@ var SignUpContainer = require('./components/signUp.jsx').SignUpContainer;
 var LoginContainer = require('./components/login.jsx').LoginContainer;
 var RecipeContainer = require('./components/recipeView.jsx').RecipeContainer;
 
+
 var AppRouter = Backbone.Router.extend({
   routes: {
     '': 'index',
     'recipe-list/': 'recipeList',
     'add-recipe/': 'recipeForm',
-    'add-recipe/:id': 'recipeForm',
+    'add-recipe/:id/': 'recipeForm',
     'sign-up/': 'signUp',
     'login/': 'login',
     'classes/Recipes/:id/': 'recipe'
