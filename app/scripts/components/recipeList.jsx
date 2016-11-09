@@ -10,7 +10,7 @@ var RecipeTile = React.createClass({
         <div key={recipe.get('objectId')} className="col-md-2">
           <div className="recipe-thumbnail col-md-12">
             <a href={'#/classes/Recipes/'+ recipe.get('objectId') +'/'}>
-              <p className="recipe-name">{recipe.get('recipeName')}</p>
+              <p className="recipe-name">{recipe.get('recipe_name')}</p>
             </a>
           </div>
         </div>

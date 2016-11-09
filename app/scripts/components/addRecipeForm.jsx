@@ -94,15 +94,19 @@ var AddIngredientForm = React.createClass({
 
 var AddRecipeFormContainer = React.createClass({
   getInitialState: function(){
+    console.log(this.props);
     return{
       recipe: new Recipe(),
       isVisible: false
     }
   },
   addRecipe: function(props){
+    var self = this;
+
     this.state.recipe.set(props);
     this.state.recipe.parseNumbers();
     this.state.recipe.save().then(function(response){
+      self.setState({recipe: self.state.recipe, isVisible: true});
       Backbone.history.navigate('/add-recipe/' + response.objectId + '/', {trigger: true});
     });
   },
